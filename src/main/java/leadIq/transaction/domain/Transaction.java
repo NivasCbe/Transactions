@@ -14,7 +14,7 @@ public class Transaction {
 	private Long transactionid;
 	private Long parentId;
 	private List<Long> childrenTransactionIdList;
-	private double childerSum;
+	
 	public double getAmount() {
 		return amount;
 	}
@@ -45,11 +45,6 @@ public class Transaction {
 	public void setChildrenTransactionIdList(List<Long> childrenTransactionIdList) {
 		this.childrenTransactionIdList = childrenTransactionIdList;
 	}
-	public double getChilderSum() {
-		return childerSum;
-	}
-	public void setChilderSum(double childerSum) {
-		this.childerSum = childerSum;
-	}
+	
 	
 }

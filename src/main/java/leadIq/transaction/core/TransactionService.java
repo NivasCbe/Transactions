@@ -39,7 +39,6 @@ public class TransactionService {
 				logger.debug("Primary lock successfully acquired for transaction-id "+currentTransactionId);
 				Transaction existingTransaction = idToTransactionMap.get(currentTransactionId);
 				if (existingTransaction != null) {
-					transaction.setChilderSum(existingTransaction.getAmount());
 					transaction.setChildrenTransactionIdList(existingTransaction.getChildrenTransactionIdList());
 					logger.info("TRANSACTION ALREADY EXISTS - GETTING REPLACED for transaction-id "+currentTransactionId);
 				}
@@ -47,8 +46,6 @@ public class TransactionService {
 				Long parentId = transaction.getParentId();
 				if (parentId != null && idToTransactionMap.get(parentId) != null) {
 					Transaction parentTransaction = idToTransactionMap.get(parentId);
-					double childSum = parentTransaction.getChilderSum();
-					parentTransaction.setChilderSum(childSum + transaction.getAmount());
 					List<Long> childTransactionsList = parentTransaction.getChildrenTransactionIdList();
 					if (childTransactionsList == null) {
 						childTransactionsList = new ArrayList<Long>();
